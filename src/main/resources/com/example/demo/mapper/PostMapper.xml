@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PostMapper">
+  <select id="selectAll" resultType="com.example.demo.entity.Post">
+    select * from post where uid = #{uid}
+  </select>
+  <insert id="addPost" parameterType="com.example.demo.entity.Post">
+    insert into post (uid,title,content,settled_flg)
+    values (#{uid},#{title},#{content},0)
+  </insert>
+  <select id="selectAllPost" resultType="com.example.demo.entity.Post">
+    select * from post where settled_flg != 1
+  </select>
+  <update id="settled_post" parameterType="com.example.demo.entity.Post">
+  	update post set settled_flg = 1 where pid = #{pid}
+  </update>
+  <delete id="DelPost" parameterType="com.example.demo.entity.Post">
+  	delete from post where pid = #{pid}
+  </delete>
+</mapper>

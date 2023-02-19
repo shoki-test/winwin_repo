@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>投稿一覧</title>
+</head>
+<body>
+<h1>投稿一覧</h1>
+<h2>ユーザーID</h2>
+<br>
+<br>
+<th:block th:each="post : ${AllPost_list}">			
+	<p th:text="${post.title}"></p>
+	<p th:text="${post.content}"></p>
+	<form method="post" th:action="@{/post_answer}">
+	<input type="hidden" name="pid" th:value="${post.pid}">
+	<input type="hidden" name="uid" th:value="${uid}">
+	<input type="text" name="title" />
+	<input type="text" name="content"/>
+	<input type="submit" value="回答する"/>
+	</form>
+	<form method="post" th:action="@{/post_del}">
+	<input type="hidden" name="uid" th:value="${uid}">
+	<input type="hidden" name="password" th:value="${password}">	
+	<input type="hidden" name="pid" th:value="${post.pid}">
+	<input type="hidden" name="title" th:value="${post.title}"/>
+	<input type="hidden" name="content" th:value="${post.content}"/>
+	<input type="submit" value="削除する"/>
+	</form>
+</th:block>
+<form method="post" th:action="@{/top}">
+	<input type="hidden" name="uid" th:value="${uid}">
+	<input type="hidden" name="password" th:value="${password}">
+	<input type="submit" value="自分の投稿に戻る"/>
+</form>
+</body>
+</html>

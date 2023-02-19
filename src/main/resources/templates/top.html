@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>ログインしました</h1>
+<h2>top.html</h2>
+<h2 th:text="${user_name}" />
+<th:block th:each="post : ${post_list}">
+    <p th:text="${post.title}"></p>
+    <p th:text="${post.content}"></p>
+</th:block>
+<form method="post" th:action="@{/addPost}">
+	<input type="hidden" name="settled_flg" value="0">
+	<input type="hidden" name="uid" th:value="${uid}">
+	<input type="text" name="title" />
+    <input type="text" name="content"/>
+    <input type="submit" value="投稿する"/>
+</form>
+<a href="/post_list">みんなの投稿を見る</a>
+<a href = "/">トップに戻る</a>
+</body>
+</html>
