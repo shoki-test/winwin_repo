@@ -12,7 +12,7 @@ variables:
   azureSubscription: 'fa9f8201-1e1c-4795-9059-82abf92124b0'
 
   # Web app name
-  webAppName: ''
+  webAppName: 'springtest-20230219-test'
 
   # Environment name
   environmentName: ''
